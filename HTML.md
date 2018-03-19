@@ -67,4 +67,30 @@
 	
 5. 如何理解HTML结构的语义化
 	参考：https://juejin.im/post/5a9c8866f265da23741072bf、https://www.jianshu.com/p/6bc1fc059b51
+
+6. HTML5新增了哪些内容或API，如何使用
+	API:
+	1. document.querySelector()、document.querySelectorAll()
+	`document.querySelector()`根据css选择器返回第一个匹配的元素，如果没有匹配返回null；`document.querySelectorAll()`和`document.querySelector()`作用一样的，只是前者返回的是元素数组，如果`querySelectorAll`没有匹配的内容返回的是一个空数组。
+	2. classList：元素的所有class name的数组
+		```
+		<body>  
+			<ul class="class1 class2 class3 ">  
+				<li>1</li>  
+				<li>2</li>  
+				<li>3</li>  
+				<li>4</li>  
+			</ul>  
+			<script>  
+				var ul = document.getElementsByTagName("ul")[0];  
+				console.log(ul.classList.item(0)); // class1
+				ul.classList.add("class4"); // 此时ul的class为：class1 class2 class3 class4
+				ul.classList.remove("class4"); // 此时ul的class为：class1 class2 class3 
+				console.log(ul.classList.contains("class1")); // true
+			</script>  
+		</body>  
+		```
+	3. 全屏：FullScreen
+	4. 页面可见性
+	5. 预加载
 	
