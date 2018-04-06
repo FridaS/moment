@@ -3,13 +3,13 @@
 	在很久以前的网络上，页面通常有两种版本：为网景（Netscape）的 Navigator 准备的版本、为微软（Microsoft）的Internet Explorer准备的版本。当W3C创立网络标准后，为了不破坏当前既有的网站，浏览器不能直接起用这些标准。因此，浏览器采用了两种模式，用以把能符合新规范的网站和老旧网站区分开。
 
 	目前浏览器的排版引擎有三种模式：怪异模式（Quirks mode）、接近标准模式（Almost standards mode）和标准模式（Standards mode）。
-	
+
 	在怪异模式下，排版会模拟Navigator 4 与 Internet Explorer 5 的非标准行为。为了支持在网络标准被广泛采用前就已经建好的网站，这么做是必要的；
-	
+
 	在标准模式下，行为即（但愿如此）由HTML于CSS的规范描述的行为；
-	
+
 	在接近标准模式下，只有少数的怪异行为被实现。
-	
+
 	其具体的差别有：
 	- IE的盒模型的处理差异：标准CSS盒模型的宽度和高度等于内容区的高度和宽度，不包含内边距和边框；而IE6之前的浏览器实现的盒模型的宽高计算方式是包含内边距和边框的；
 	- 行内元素的垂直对其：很多早期的浏览器对齐图片至包含它们的盒子的下边框，虽然CSS的规范要求它们被对齐至盒内文本的基线；标准模式下，基于Gecko的浏览器将会对齐至基线（在标准模式下，图片并不是与父元素的下边框对齐的、而是基线对齐的，仔细观察，会发现图片与父元素下边框之间存在一点小空隙），而在quirks模式下它们会对齐至底部。
@@ -18,14 +18,14 @@
 2. Doctype含义、作用
 
 	用于告诉浏览器，用怪异模式还是标准模式处理HTML文件。
-	
+
 	标准模式使用：`<!DOCTYPE html>`。这是所有可用的DOCTYPE之中最简单的、而且是HTML5推荐的。使用其他更复杂的DOCTYPE并没有什么好处、而且可能会让你冒着触发接近标准模式或者怪异模式的风险。
-	
+
 	请正确地把DOCTYPE放在HTML文件顶端，任何放在DOCTYPE前端的东西，比如注释或XML声明，会令Internet Explorer 9 或更早期的浏览器触发怪异模式。
-	
+
 	在HTML5中，DOCTYPE唯一的作用是启动标准模式。更早期的HTML标准会附加其他意义，但没有任何浏览器会将DOCTYPE用于怪异模式和标准模式之间互换以外的用途。
-	
-	
+
+
 3. 渐进增强和优雅降级
 
 	渐进增强和优雅降级这两个概念实在CSS3出现之后火起来的。由于低级浏览器不支持CSS3，但是CSS3特效太优秀不忍放弃，所以产生了一种解决方式：在高级浏览器中使用CSS3，而在低级浏览器中只保证最基本的功能。
@@ -49,24 +49,28 @@
 		-webkit-transition: all .5s;
 	}
 	```
-	
+
 	假设写一个表单，用一个a标签的click事件做提交，如果JavaScript被禁用了、则表单提交功能也失效了。假如使用`<input type="submit" />`，那么即使JavaScript被禁用、依然可以提交。
 	所以和渐进增强相比，优雅降级还有其特别的意义。优雅降级需要正确地体现HTML标签的语义（渐进增强一般说的是CSS3技术），符合“浏览器的预期”，让你的网页在各种情况下（包括JavaScript被禁用、css传输失败等降级情况）的情形都可以运作良好。
 
-	那么实际开发过程中选渐进增强还是优雅降级呢？如果**低版本**用户居多，则优先采用**渐进增强**；反之如果**高版本**用户居多，为了提高大多数用户的使用体验，优先采用**优雅降级**的开发流程。现在的大多数大公司都是采用渐进增强的方式，因为业务优先，要优先保障产品对绝大多数用户的可用性，再去渐进增强，采用新功能给高版本用户提供更好的用户体验。
-	
+	那么实际开发过程中选渐进增强还是优雅降级呢？如果**低版本**用户居多，则优先采用**渐进增强**；反之如果**高版本**用户居多，为了提高大多数用户的使用体验，优先采用**优雅降级**的开发流程。现在的大多数大公司都是采用渐进增强的方式，因为业务优先，要优先保障产品对绝大多数用户的可用性，再去渐进增强，采用新功能给高版本用户提供更好的用户体验。
+
 4. 简述src与href的区别
 
 	- src：source（源），用于替换当前元素，src指向的内容会嵌入到文档中当前标签所在的位置，比如img、script、iframe、style。举个例子：
 	`<script src="script.js"></script>`
 	当浏览器解析到该元素时，会暂停浏览器的渲染，直到该资源加载完毕。这也是将js脚本放在页面底部而不是头部的原因。
-	
+
 	- href：Hypertext Reference（超文本引用），用来建立当前元素和文档之间的连接，比如link、a。举个例子：
 	`<link href="reset.css" ref="stylesheet" />`
 	浏览器会识别该文档为css文档，并行下载该文档，并且不会停止对当前文档的处理。这也是建议使用link，而不是采用@import加载css的原因。
+
+5. 如何理解HTML的语义化
 	
-5. 如何理解HTML结构的语义化
-	参考：https://juejin.im/post/5a9c8866f265da23741072bf、https://www.jianshu.com/p/6bc1fc059b51
+
+	参考文章：
+	- https://juejin.im/post/5a9c8866f265da23741072bf
+	- https://www.jianshu.com/p/6bc1fc059b51
 
 6. HTML5新增了哪些内容或API，如何使用
 	API:
@@ -85,7 +89,7 @@
 				var ul = document.getElementsByTagName("ul")[0];  
 				console.log(ul.classList.item(0)); // class1
 				ul.classList.add("class4"); // 此时ul的class为：class1 class2 class3 class4
-				ul.classList.remove("class4"); // 此时ul的class为：class1 class2 class3 
+				ul.classList.remove("class4"); // 此时ul的class为：class1 class2 class3
 				console.log(ul.classList.contains("class1")); // true
 			</script>  
 		</body>  
@@ -93,4 +97,3 @@
 	3. 全屏：FullScreen
 	4. 页面可见性
 	5. 预加载
-	
