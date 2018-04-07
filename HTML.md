@@ -66,14 +66,139 @@
 	浏览器会识别该文档为css文档，并行下载该文档，并且不会停止对当前文档的处理。这也是建议使用link，而不是采用@import加载css的原因。
 
 5. 如何理解HTML的语义化
-	
+	1. ）什么是语义化
+	语义化是指用合适的标签（代码语义化）来呈现结构化的内容（内容语义化），以便让机器更好地读懂内容，同时更有利于提升其可读性和可维护性。
+
+	2. ）为什么语义化
+		- 有利于SEO，有助于爬虫抓取更多的有效信息，爬虫依赖于标签来确定上下文和各个关键字的权重；
+		- 语义化的HTML在没有CSS的情况下也能呈现较好的内容结构和代码结构；
+		- 方便其他设备解析（如听障设备、移动设备）；
+		- 便于团队开发和维护。
+
+	3. ）有哪些语义化标签
+		- 文档章节类HTML标签
+			- article / section：article无论从结构还是内容上来说，都是独立的、完整的，当一段内容脱离了所在的语境后还是完整的、独立的，那就应该用article标签；section应用的典型场景有文章的章节、标签对话框中的标签页或者论文中有编号的部分。对于一段主题性的内容，可以使用section；假如这段内容可以脱离上下文、作为完整的独立存在，那就使用article。原则上来说，能使用article的时候，也是可以使用section的，但是实际上，假入article更合适，那就不要使用section。
+			- header / footer：网页或文章的页眉、页尾。header作为整个页面或者一个内容块的头部部分，有可以包裹一节的目录部分；footer代表网页或一个内容块的底部部分，通常含有该节的一些基本信息。它们都没有个数限制。
+			- hgroup：如果有连续多个h1-h6标签，可以使用hgroup包裹。比如有一个章节的头部信息包括连续多个h1-h6标签以及其他文章数据，那么h1-h6标签就用hgroup包住，连同其他文章数据一起放入header标签中。
+			- h1 - h6：表示标题，权重逐渐降低。一个页面允许出现多个（包括h1）。
+			- main：整个页面的主题部分，一个页面只能有一个main（HTML 5.2将可以使用多个main），不能放进其他独立单元里，它包括一个页面最核心的内容。
+			- aside：一般表示文章主体内容以外的附属信息，其中内容可以是与当前文章有关的相关资料、标签、名词解释等，最典型的是作为侧边栏；也可以表示一些工具功能，如“分享文章”、“回到顶部”等功能。
+			- nav：表示网站的导航，但不一定所有的导航都需要用nav标签，建议仅用来实现比较重要的导航，如网页头部导航，如网页页脚的链接导航列表用footer即可。每个页面可以有多个nav。
+		- 文本类HTML标签
+			- a：表示一个通向其他页面或当前页面其他位置的入口，这是一个历史悠久的语义化标签，同时也是搜索引擎的基础。
+			- p：表示一个段落。
+			- em / strong：用来强调某个词或某个句子。从语气上来说，strong比em强调意味更重。
+			- time：用来表示24小时制时间或公历日期，若表示日期则可以包含时间和时区。对于time，尽量用机器能识别的时间格式，而不要用一些模糊的表达，如“一小时前”、“两天前”等。
+			- address：表示区块容器，必须是作为联系信息出现，比如邮编地址、邮件地址等等，一般出现在footer。
+		- 组合型HTML标签
+			- figure：表示一段富文本，通常搭配figcaption来描述这段富文本的描述/标题，一个figure下只能有一个figcaption。
+
+	4. ）编写HTML语义化代码注意事项
+		- 尽量使用语义化标签，而不是使用无语义的div和span堆砌；
+		- 在语义不明显时，既可以使用div也可以使用p时，尽量用p，因为p在默认情况下有上下间距，对兼容特殊终端有利；
+		- 尽量不要使用纯样式标签如b、font、u等，样式用css设置；
+		- 需要强调的文本，使用strong或者em标签（前者默认样式是加粗、后者默认样式是斜体），而不是使用b或i标签；
+		- 使用表格时，标题用caption，表头用thead，主体部分用tbody，尾部用tfootb；表头和一般单元格要区分开，表头用th，一般单元格用td；
+		- 表单域用fieldset，并用legend标签说明表单的用途；
+		- 每个input标签对应的说明文本都需要使用label标签，并通过为input设置id属性，在label标签中设置for=someId来让说明文本和相对应的input关联起来。
 
 	参考文章：
+	- https://www.cnblogs.com/fliu/articles/5244866.html
 	- https://juejin.im/post/5a9c8866f265da23741072bf
-	- https://www.jianshu.com/p/6bc1fc059b51
 
 6. HTML5新增了哪些内容或API，如何使用
+	
 	API:
+	1. ）Canvas
+	Canvas本质上是一个位图画布。
+	> 使用canvas编程，首先要获取其上下文（context）；接着在上下文中执行动作；最后将这些动作应用到上下文中。可以将canvas的这种编程方式想象成数据库事务：开发人员先发起一个事务，然后执行某些操作，最后提交事务。
+	
+	举个例子：
+	```
+	// html
+	<canvas id="diagonal" style="border:1px solid;" width="200" height="200"></canvas>
+
+	// javascript
+	function drawDiagnoal () {
+		// 取canvas元素及其绘图上下文
+		var canvas = document.getElementbyId('diagonal');
+		var context = canvas.getContext('2d');
+
+		// 用绝对坐标来创建一条路径
+		context.beginPath();
+		context.moveTo(70, 140);
+		context.lineTo(140, 70);
+
+		// 将这条线绘制到canvas上
+		context.stroke();
+	}
+	window.addEventListener('load', drawDiagnoal, true);
+	```
+
+	2. ）Audio和Video
+	HTML5中的多媒体支持。
+	```
+	// html
+	<audio id="clickSound">
+		<srource src="a.ogg" type="audio/ogg">
+		<srource src="b.mp3" type="audio/mped">
+		您的浏览器不支持audio元素
+	</audio>
+
+	<button id="toggle" onclick="toggleSound()">Play</button>
+
+	// javascript
+	function toggleSound () {
+		var music = document.getElementById('clickSound');
+		var toggle = document.getElementById('toggle');
+		if (music.paused) {
+			music.play();
+			toggle.innerHTML = 'Pause';
+		} else {
+			music.pause();
+			toggle.innerHTML = 'Play';
+		}
+	}
+	```
+	```
+	<video width="320" height="240" controls>
+		<source src="movie.mp4" type="video/mp4">
+		<source src="movie.ogg" type="video/ogg">
+		您的浏览器不支持 video 标签。
+	</video>
+	```
+
+	3. ）Geolocation
+	> 请求一个位置信息，如果用户同意，浏览器就会返回位置信息，改位置信息是通过支持HTML5地理定位功能的底层设备提供给浏览器的。位置信息由经度/维度坐标和一些其他的元数据组成。有了这些位置信息就可以构建位置感知类应用程序。
+
+	两种类型的定位请求API：单次定位请求和重复性的位置更新请求；单次定位（获取当前定位）：getCurrentPosition()；重复新的位置更新（监视定位，设备发生移动或获取到了更高精度的地理位置信息）：
+	```
+	function loadDemo () {
+		if (navigator.geolocation) {
+			navigator.geolocation.watchPosition(
+				updateLocation,
+				handleLocationError,
+				{ maximumAge: 20000 }
+			);
+		}
+	}
+
+	function updateLocation (position) {
+		var latitude = position.coords.latitude,
+			longitude = position.coords.longitude,
+			accuracy = position.coords.accuracy,
+			timestamp = position.timestamp;
+	}
+
+	window.addEventListener('load', loadDemo, true);
+	```
+	4. ）WebSocket
+	> WebSocket作为HTML5一种新的协议，实现了浏览器与服务器的双向通讯。在WebScoket API中，浏览器和服务器只需要做一个握手的动作，浏览器和服务器之间就形成了一条快速通道，两者就可以直接进行数据传送。
+
+	
+
+	5. ）
+
 	1. document.querySelector()、document.querySelectorAll()
 	`document.querySelector()`根据css选择器返回第一个匹配的元素，如果没有匹配返回null；`document.querySelectorAll()`和`document.querySelector()`作用一样的，只是前者返回的是元素数组，如果`querySelectorAll`没有匹配的内容返回的是一个空数组。
 	2. classList：元素的所有class name的数组
@@ -94,6 +219,12 @@
 			</script>  
 		</body>  
 		```
+
+	参考文章：
+	- http://jartto.wang/2016/07/25/make-an-inventory-of-html5-api/
+
 	3. 全屏：FullScreen
 	4. 页面可见性
 	5. 预加载
+
+未完待续……
