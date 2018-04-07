@@ -64,7 +64,6 @@
 	- href：Hypertext Reference（超文本引用），用来建立当前元素和文档之间的连接，比如link、a。举个例子：
 	`<link href="reset.css" ref="stylesheet" />`
 	浏览器会识别该文档为css文档，并行下载该文档，并且不会停止对当前文档的处理。这也是建议使用link，而不是采用@import加载css的原因。
-
 5. 如何理解HTML的语义化
 	1. ）什么是语义化
 	语义化是指用合适的标签（代码语义化）来呈现结构化的内容（内容语义化），以便让机器更好地读懂内容，同时更有利于提升其可读性和可维护性。
@@ -108,7 +107,7 @@
 
 6. HTML5新增了哪些内容或API，如何使用
 	
-	API:
+	### API:
 	1. ）Canvas
 	Canvas本质上是一个位图画布。
 	> 使用canvas编程，首先要获取其上下文（context）；接着在上下文中执行动作；最后将这些动作应用到上下文中。可以将canvas的这种编程方式想象成数据库事务：开发人员先发起一个事务，然后执行某些操作，最后提交事务。
@@ -160,6 +159,7 @@
 		}
 	}
 	```
+
 	```
 	<video width="320" height="240" controls>
 		<source src="movie.mp4" type="video/mp4">
@@ -193,15 +193,49 @@
 	window.addEventListener('load', loadDemo, true);
 	```
 	4. ）WebSocket
-	> WebSocket作为HTML5一种新的协议，实现了浏览器与服务器的双向通讯。在WebScoket API中，浏览器和服务器只需要做一个握手的动作，浏览器和服务器之间就形成了一条快速通道，两者就可以直接进行数据传送。
+	> WebSocket作为HTML5一种新的协议，实现了浏览器与服务器的双向通讯（双工通信，full-duplex）。在WebScoket API中，浏览器和服务器只需要做一个握手的动作，浏览器和服务器之间就形成了一条快速通道，两者就可以直接进行数据传送。
 
-	
+	在WebSocket协议中，为什么实现即时服务带来了两大好处：
+	- Header：互相沟通的Header是很小的，大概只有2 Bytes；
+	- Server Push
 
-	5. ）
+		```
+		var wsServer = 'ws://localhost:8888/Demo';
+		var websocket = new WebSocket(wsServer);
 
-	1. document.querySelector()、document.querySelectorAll()
+		websocket.onopen = function (evt) { onOpen(evt) };
+		websocket.onclose = function (evt) { onClose(evt) };
+		websocket.onmessage = function (evt) { onMessage(evt) };
+		websocket.onerror = function (evt) { onError(evt) };
+
+		function onOpen(evt) {
+			console.log("Connected to WebSocket server.");
+		}
+		function onClose(evt) {
+			console.log("Disconnected");
+		}
+		function onMessage(evt) {
+			console.log('Retrieved data from server: ' + evt.data);
+		}
+		function onError(evt) {
+			console.log('Error occured: ' + evt.data);
+		}
+		```
+		在实现websocket连线过程中，需要通过浏览器发出websocket连线请求，然后服务器发出回应，这个过程通常称为“握手”（handshaking）。
+		作为这一设计原则的一部分，WebSocket链接的协议规范定义了一个HTTP链接作为其开始生命周期，进而保证其与pre-WebSocket世界的完全向后兼容。通常来说HTTP协议切换WebSocket称为WebSocket握手。
+
+	5. ）Web storage
+		- localStorage和sessionStorage；
+		- 离线缓存
+
+	6. ）Communication
+	7. ）Web Workers
+	8. ）requestAnimationFrame
+	> 浏览器可以优化并行的动画动作，更合理地重新排列动作序列，并把能够合并的动作放在一个渲染周期内完成，从而呈现出更流畅的动画效果。比如，通过requestAnimationFrame()，JS动画能够和CSS动画/变换或SVG SMIL动画同步发生。另外，如果在一个浏览器标签页里运行一个动画，当这个标签页不可见时，浏览器会暂停它，这回减少CPU内存的压力，节省电池电量。
+
+	9. ）document.querySelector()、document.querySelectorAll()
 	`document.querySelector()`根据css选择器返回第一个匹配的元素，如果没有匹配返回null；`document.querySelectorAll()`和`document.querySelector()`作用一样的，只是前者返回的是元素数组，如果`querySelectorAll`没有匹配的内容返回的是一个空数组。
-	2. classList：元素的所有class name的数组
+	10. ）classList：元素的所有class name的数组
 		```
 		<body>  
 			<ul class="class1 class2 class3 ">  
@@ -220,11 +254,78 @@
 		</body>  
 		```
 
+	11. ）全屏：FullScreen
+	12. ）页面可见性
+	13. ）预加载
+
 	参考文章：
 	- http://jartto.wang/2016/07/25/make-an-inventory-of-html5-api/
 
-	3. 全屏：FullScreen
-	4. 页面可见性
-	5. 预加载
+	### 标签
+	- HTML5新增的标签：
+		- 图形绘制：canvas
+		- 新多媒体元素：audio、video、source（定义多媒体资源，audio或video）、embed（定义嵌入的内容，如插件）、track（为如video和audio元素之类的媒介规定外部文本轨道）
+		- 新表单元素：datalist（定义选项列表，请与input元素配合使用、来定义input可能的值）、keygen（规定用于表单的密钥对生成器字段）、output（定义不同类型的输出，如脚本的输出）
+		- 新的语义和结构元素：article、section、aside、nav、footer、header、bdi、command、details、dialog、summary、figure、figcaption、mark、meter、progress、ruby、rt、rp、time、wbr
+	- HTML5移除的标签：
+		- 纯表现的元素：acronym（代表首字母缩写）、applet、basefont（默认字体）、big（大字体）、center（水平居中）、dir、font（字体标签）、strike（中横线）、tt（文本等宽）、u（下划线）
+		- 框架集：frame、frameset、noframes
+	
+
+7. meta
+```
+<!-- 设置缩放 -->
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui" />
+<!-- 可隐藏地址栏，仅针对IOS的Safari（注：IOS7.0版本以后，safari上已看不到效果） -->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!-- 仅针对IOS的Safari顶端状态条的样式（可选default/black/black-translucent ） -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<!-- IOS中禁用将数字识别为电话号码/忽略Android平台中对邮箱地址的识别 -->
+<meta name="format-detection"content="telephone=no, email=no" />
+
+其他meta标签
+<!-- 启用360浏览器的极速模式(webkit) -->
+<meta name="renderer" content="webkit">
+<!-- 避免IE使用兼容模式 -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+<meta name="HandheldFriendly" content="true">
+<!-- 微软的老式浏览器 -->
+<meta name="MobileOptimized" content="320">
+<!-- uc强制竖屏 -->
+<meta name="screen-orientation" content="portrait">
+<!-- QQ强制竖屏 -->
+<meta name="x5-orientation" content="portrait">
+<!-- UC强制全屏 -->
+<meta name="full-screen" content="yes">
+<!-- QQ强制全屏 -->
+<meta name="x5-fullscreen" content="true">
+<!-- UC应用模式 -->
+<meta name="browsermode" content="application">
+<!-- QQ应用模式 -->
+<meta name="x5-page-mode" content="app">
+<!-- windows phone 点击无高光 -->
+<meta name="msapplication-tap-highlight" content="no">
+```
+
+8. viewpoint
+```
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+// width    		设置viewport宽度，为一个正整数，或字符串‘device-width’
+// device-width  	设备宽度
+// height   		设置viewport高度，一般设置了宽度，会自动解析出高度，可以不用设置
+// initial-scale    默认缩放比例（初始缩放比例），为一个数字，可以带小数
+// minimum-scale    允许用户最小缩放比例，为一个数字，可以带小数
+// maximum-scale    允许用户最大缩放比例，为一个数字，可以带小数
+// user-scalable    是否允许手动缩放
+```
+
+9. 如何处理移动端1px被处理成2px的问题
+	1. 局部处理：meta标签中的viewport属性，initial-scale设置为1。rem按照设计稿标准走，外加利用transform的scale(0.5)缩小一倍即可；
+	2. 全局处理：meta标签的viewport属性，initial-scale设置为0.5，rem按照设计稿标准走即可。
+
+10. audio元素和video元素在iOS和Android中无法自动播放
+11. HTML和XHTML区别
+12. 移动端布局方式，rem布局原理（width=device-width）
 
 未完待续……
