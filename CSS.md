@@ -1,15 +1,17 @@
-1. CSS常用布局
-2. BFC
-3. 水平居中、垂直居中
-4. px/em/rem区别
-5. animate、transition区别，animate如何停留在最后一帧
-6. 响应式布局（包括但不限于media query）
-7. 用css画三角形（直角三角形、等腰三角形等）
-8. css动画和js动画的区别？动画为什么尽量用CSS而不是js实现？（性能？）
-9. css动画相关  transform、transition、animation
-9. 浏览器如何优化动画
-10. 字体font-family
-```
+[TOC]
+
+### CSS常用布局
+### BFC
+### 水平居中、垂直居中
+### px/em/rem区别
+### animate、transition区别，animate如何停留在最后一帧
+### 响应式布局（包括但不限于media query）
+### 用css画三角形（直角三角形、等腰三角形等）
+### css动画和js动画的区别？动画为什么尽量用CSS而不是js实现？（性能？）
+### css动画相关  transform、transition、animation
+### 浏览器如何优化动画
+### 字体font-family
+```css
 @ 宋体      SimSun
 @ 黑体      SimHei
 @ 微信雅黑   Microsoft Yahei
@@ -36,8 +38,8 @@ font-family规定元素的字体系列。font-family可以把多个字体名称�
 提示：使用逗号分隔每个值，并始终提供一个类族名称作为最后的选择。
 注意：使用某种特定的字体系列（Geneva）完全取决于用户机器上该字体系列是否可用；这个属性没有指示任何字体下载。因此，强烈推荐使用一个通用字体系列名作为后路。
 
-11. 消除transition闪屏
-```
+### 消除transition闪屏
+```css
 .css {
     -webkit-transform-style: preserve-3d;
     -webkit-backface-visibility: hidden;
@@ -46,7 +48,7 @@ font-family规定元素的字体系列。font-family可以把多个字体名称�
 ```
 过渡动画（在没有启动硬件加速的情况下）会出现抖动的现象， 以上的解决方案只是改变视角来启动硬件加速的一种方式；
 启动硬件加速的 另外一种方式：
-```
+```css
 .css {
     -webkit-transform: translate3d(0,0,0);
     -moz-transform: translate3d(0,0,0);
@@ -62,29 +64,29 @@ will-chang属性（这个比较偏僻），一般配合opacity与translate使用
 
 弊端： 硬件加速会导致 CPU性能占用量过大，电池电量消耗加大 ；因此 尽量避免泛滥使用硬件加速。
 
-12. 单行文本溢出显示…、多行文本溢出显示…
+### 单行文本溢出显示…、多行文本溢出显示…
 
-```
-// 单行文本溢出显示…
+```css
+/* 单行文本溢出显示… */
 width:100px;
 overflow:hidden;
 text-overflow:ellipsis;
 white-space:nowrap;
 
-// 多行文本溢出显示…
-// 因为使用了webkit的CSS扩展，所以该方法适用于webkit浏览器及移动端
-display:-webkit-box; // 将对象作为弹性伸缩盒子模型显示
--webkit-box-orient:vertical; // 设置或检索伸缩盒对象的子元素的排列方式
+/* 多行文本溢出显示… */
+/* 因为使用了webkit的CSS扩展，所以该方法适用于webkit浏览器及移动端 */
+display:-webkit-box; /* 将对象作为弹性伸缩盒子模型显示 */
+-webkit-box-orient:vertical; /* 设置或检索伸缩盒对象的子元素的排列方式 */
 -webkitlline-clamp:2;
 overflow:hidden;
 ```
 
-13. 兼容尽量多浏览器的多行文本溢出显示…方式呢？（只能用js来做了？）
-14. 改变placeholder的字体颜色大小
-15. flex
-16. grid：https://www.jianshu.com/p/d183265a8dad
-17. 盒模型概念
-17. box-sizing
+### 兼容尽量多浏览器的多行文本溢出显示…方式呢？（只能用js来做了？）
+### 改变placeholder的字体颜色大小
+### flex
+### grid：https://www.jianshu.com/p/d183265a8dad
+### 盒模型概念
+### box-sizing
 
 每个元素都被表示为一个矩形的盒子，标准盒模型（W3C盒模型）和怪异盒模型（IE盒模型）都包括margin、border、padding、content：
 - 标准盒模型（W3C盒模型）：cotent仅仅是content、不包含其他部分;盒子实际width = border *2 + padding * 2 + contentWidth
@@ -103,12 +105,12 @@ overflow:hidden;
 box-sizing:border-box;
 ```
 
-18. 行内元素有哪些，块级元素有哪些
-19. 写出CSS 3的几个属性
-20. 定位有哪几种
+### 行内元素有哪些，块级元素有哪些
+### 写出CSS 3的几个属性
+### 定位有哪几种
 static、relative、absolute、fixed、sticky
 
-21. CSS有哪些样式可以给子元素继承
+### CSS有哪些样式可以给子元素继承
 - 可继承：
     - 所有元素可继承：visibility、cursor
     - 内联元素可继承：letter-spacing、word-spacing、white-space、line-height、color、font、font-family、font-size、font-style、font-variant、font-weight、text-decoration、text-transform、direction
@@ -119,6 +121,9 @@ static、relative、absolute、fixed、sticky
 
 参考：(http://blog.163.com/yhwwen@126/blog/static/170468853201326421822/)
 
-22. 清除浮动方式、比较
-23. 说说样式权重的优先级
-24. background-size contain和cover区别
+### 清除浮动方式、比较
+### 说说样式权重的优先级
+### background-size contain和cover区别
+
+
+未完待续……
