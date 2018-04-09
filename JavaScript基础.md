@@ -57,6 +57,9 @@ https://segmentfault.com/a/1190000009755157
 
 ### 拖拽功能实现
 
+### setTimeout参数
+![](http://chuantu.biz/t6/278/1523274328x-1566657543.png)
+
 
 
 
