@@ -23,7 +23,7 @@ http://blog.csdn.net/michael8512/article/details/79031656
 
 总结：从外到内、再从内到外，mixins先于组件。
 
-
+### 框架的脏检查（如vue的）
 ### virtual DOM和diff算法的实现
 https://github.com/livoras/blog/issues/13、https://www.zhihu.com/question/61064119/answer/183717717、https://segmentfault.com/q/1010000000367833
 ### vue complier实现
