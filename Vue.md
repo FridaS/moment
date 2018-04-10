@@ -1,4 +1,26 @@
-[TOC]
+<!-- TOC -->
+
+- [生命周期：](#生命周期)
+- [Vue组件data为什么必须是函数](#vue组件data为什么必须是函数)
+- [动态设置响应式数据 this.$set()](#动态设置响应式数据-thisset)
+- [如何设计一些组件，原则是什么，写过什么自豪或眼前一亮的组件](#如何设计一些组件原则是什么写过什么自豪或眼前一亮的组件)
+- [组件间通信：](#组件间通信)
+- [Vue父子组件嵌套时，组件内部的各个生命周期钩子触发先后顺序](#vue父子组件嵌套时组件内部的各个生命周期钩子触发先后顺序)
+- [框架的脏检查（如vue的）](#框架的脏检查如vue的)
+- [virtual DOM和diff算法的实现](#virtual-dom和diff算法的实现)
+- [vue complier实现](#vue-complier实现)
+- [MVC、MVVM，数据单项绑定和双向绑定](#mvcmvvm数据单项绑定和双向绑定)
+- [vue数据绑定原理](#vue数据绑定原理)
+- [计算属性原理](#计算属性原理)
+- [Vue响应式原理（Object.defineProperty）的另一种实现方式：Proxy](#vue响应式原理objectdefineproperty的另一种实现方式proxy)
+- [vue slot使用](#vue-slot使用)
+- [vue-router实现方式（和一般使用方式）](#vue-router实现方式和一般使用方式)
+- [不使用vue-router时如何利用H5的history API来实现路由跳转](#不使用vue-router时如何利用h5的history-api来实现路由跳转)
+- [单页应用](#单页应用)
+- [ssr](#ssr)
+- [vuex概念](#vuex概念)
+
+<!-- /TOC -->
 
 ### 生命周期：
 https://github.com/FridaS/blog/issues/2

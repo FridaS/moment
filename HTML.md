@@ -1,10 +1,29 @@
-<!-- [TOC] -->
-<!-- toc -->
-<!-- tocstop -->
+<!-- TOC -->
 
-<!-- ## HTML -->
+- [标准模式与兼容模式（怪异模式）](#标准模式与兼容模式怪异模式)
+- [Doctype含义、作用](#doctype含义作用)
+- [渐进增强和优雅降级](#渐进增强和优雅降级)
+- [简述src与href的区别](#简述src与href的区别)
+- [如何理解HTML的语义化](#如何理解html的语义化)
+- [HTML5新增了哪些内容或API，如何使用](#html5新增了哪些内容或api如何使用)
+    - [API](#api)
+    - [标签](#标签)
+- [meta](#meta)
+- [viewpoint](#viewpoint)
+- [如何处理移动端1px被处理成2px的问题](#如何处理移动端1px被处理成2px的问题)
+- [audio元素和video元素在iOS和Android中无法自动播放](#audio元素和video元素在ios和android中无法自动播放)
+- [HTML和XHTML区别](#html和xhtml区别)
+- [移动端布局方式，rem布局原理（width=device-width）](#移动端布局方式rem布局原理widthdevice-width)
+
+<!-- /TOC -->
+
+
 ### 标准模式与兼容模式（怪异模式）
-在很久以前的网络上，页面通常有两种版本：为网景（Netscape）的 Navigator 准备的版本、为微软（Microsoft）的Internet Explorer准备的版本。当W3C创立网络标准后，为了不破坏当前既有的网站，浏览器不能直接起用这些标准。因此，浏览器采用了两种模式，用以把能符合新规范的网站和老旧网站区分开。
+在很久以前的网络上，页面通常有两种版本：
+- 为网景（Netscape）的 Navigator 准备的版本；
+- 为微软（Microsoft）的Internet Explorer准备的版本。
+
+当W3C创立网络标准后，为了不破坏当前既有的网站，浏览器不能直接起用这些标准。因此，浏览器采用了两种模式，用以把能符合新规范的网站和老旧网站区分开。
 
 目前浏览器的排版引擎有三种模式：怪异模式（Quirks mode）、接近标准模式（Almost standards mode）和标准模式（Standards mode）。
 

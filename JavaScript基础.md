@@ -1,4 +1,46 @@
-[TOC]
+<!-- TOC -->
+
+- [JavaScript数据类型](#javascript数据类型)
+- [js判断数据类型的方法（及其注意事项和优缺点）](#js判断数据类型的方法及其注意事项和优缺点)
+    - [typeof](#typeof)
+    - [instanceof](#instanceof)
+    - [constructor](#constructor-function Object() { [native code] }1)
+    - [toString](#tostring-function toString() { [native code] }1)
+- [null和undefined的差异](#null和undefined的差异)
+- [浅拷贝和深拷贝的区别，深拷贝如何实现](#浅拷贝和深拷贝的区别深拷贝如何实现)
+- [闭包](#闭包)
+- [继承](#继承)
+- [js里实现继承，如何避免原型链上面的对象共享](#js里实现继承如何避免原型链上面的对象共享)
+- [节流（截流？）和防抖及其应用](#节流截流和防抖及其应用)
+- [js单线程的理解](#js单线程的理解)
+- [js的事件执行机制](#js的事件执行机制)
+- [target和currentTarget](#target和currenttarget)
+- [ajax](#ajax)
+- [函数声明和变量声明（包括ES6）](#函数声明和变量声明包括es6)
+- [变量名提升](#变量名提升)
+- [this指向问题：](#this指向问题)
+- [this概念 衍生出 call、apply、bind区别，箭头函数](#this概念-衍生出-callapplybind区别箭头函数)
+- [new的执行过程](#new的执行过程)
+- [面向对象的理解和实现](#面向对象的理解和实现)
+- [原型、原型链](#原型原型链)
+- [你认为js这门语言怎么样](#你认为js这门语言怎么样)
+- [js判断设备来源](#js判断设备来源)
+- [定时器工作机制：](#定时器工作机制)
+- [事件委托](#事件委托)
+- [DOM事件流 捕获、冒泡](#dom事件流-捕获冒泡)
+- [DOM API](#dom-api)
+- [requestAnimationFrame及其优点](#requestanimationframe及其优点)
+- [DocumentFragment](#documentfragment)
+- [大批量DOM操作对页面渲染的影响以及优化的手段](#大批量dom操作对页面渲染的影响以及优化的手段)
+- [实现图片懒加载：](#实现图片懒加载)
+- [拖拽功能实现](#拖拽功能实现)
+- [setTimeout参数](#settimeout参数)
+- [jQuery链式调用的原理](#jquery链式调用的原理)
+- [js对于异常的处理，try catch的使用，window.onerror的使用，对于promise异常的捕获，跨域脚本异常的捕获](#js对于异常的处理try-catch的使用windowonerror的使用对于promise异常的捕获跨域脚本异常的捕获)
+- [eventEmiter的实现，常规on emit off once的实现](#eventemiter的实现常规on-emit-off-once的实现)
+- [数组方法（如join）、字符串方法（如split）](#数组方法如join字符串方法如split)
+
+<!-- /TOC -->
 
 
 ### JavaScript数据类型
@@ -77,6 +119,7 @@ if(!Array.isArray){
 ```
 Array.isArray()本质上检测的是对象的\[[Class]]值，\[[Class]]是对象的一个内部属性，里面包含了对象的类型信息，其格式为[object ***]，***就是对应的具体类型。对于数组而言，\[[Class]]的值就是[Object Array]。
 
+
 #### constructor
 当一个函数F被定义时，js引擎会为F添加prototype原型，然后在prototype上添加一个constructor属性，并让其指向F的引用。如：
 <img src="http://chuantu.biz/t6/278/1523276038x-1566657543.png" width="250" />
@@ -94,6 +137,7 @@ Array.isArray()本质上检测的是对象的\[[Class]]值，\[[Class]]是对象
 因此，为了规范开发，在重写对象原型时一般都需要重新给constructor赋值，以保证对象实例的类型不被篡改。
 
 #### toString
+
 toString()是Object的原型方法，调用该方法，默认返回当前对象的\[[Class]]。
 对于Object对象，直接调用toString()就能返回[object Object]。而对于其他对象，则需要call/apply来调用才能返回正确地类型信息。
 <img src="http://chuantu.biz/t6/278/1523276180x-1566657543.png" width="350" />

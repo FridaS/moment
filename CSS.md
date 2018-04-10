@@ -1,11 +1,41 @@
-[TOC]
+<!-- TOC -->
+
+- [CSS常用布局](#css常用布局)
+- [BFC](#bfc)
+- [水平居中、垂直居中](#水平居中垂直居中)
+- [px/em/rem区别](#pxemrem区别)
+- [animate、transition区别，animate如何停留在最后一帧](#animatetransition区别animate如何停留在最后一帧)
+- [响应式布局](#响应式布局)
+- [用css画三角形（直角三角形、等腰三角形等）](#用css画三角形直角三角形等腰三角形等)
+- [css动画和js动画的区别？动画为什么尽量用CSS而不是js实现？（性能？）](#css动画和js动画的区别动画为什么尽量用css而不是js实现性能)
+- [css动画相关  transform、transition、animation](#css动画相关--transformtransitionanimation)
+- [浏览器如何优化动画](#浏览器如何优化动画)
+- [字体font-family](#字体font-family)
+- [消除transition闪屏](#消除transition闪屏)
+- [单行文本溢出显示…、多行文本溢出显示…](#单行文本溢出显示多行文本溢出显示)
+- [兼容尽量多浏览器的多行文本溢出显示…方式呢？（只能用js来做了？）](#兼容尽量多浏览器的多行文本溢出显示方式呢只能用js来做了)
+- [改变placeholder的字体颜色大小](#改变placeholder的字体颜色大小)
+- [flex](#flex)
+- [grid](#grid)
+- [盒模型概念](#盒模型概念)
+- [box-sizing](#box-sizing)
+- [行内元素有哪些，块级元素有哪些](#行内元素有哪些块级元素有哪些)
+- [写出CSS 3的几个属性](#写出css-3的几个属性)
+- [定位有哪几种](#定位有哪几种)
+- [CSS有哪些样式可以给子元素继承](#css有哪些样式可以给子元素继承)
+- [清除浮动方式、比较](#清除浮动方式比较)
+- [说说样式权重的优先级](#说说样式权重的优先级)
+- [background-size contain和cover区别](#background-size-contain和cover区别)
+
+<!-- /TOC -->
 
 ### CSS常用布局
 ### BFC
 ### 水平居中、垂直居中
 ### px/em/rem区别
 ### animate、transition区别，animate如何停留在最后一帧
-### 响应式布局（包括但不限于media query）
+### 响应式布局
+（包括但不限于media query）
 ### 用css画三角形（直角三角形、等腰三角形等）
 ### css动画和js动画的区别？动画为什么尽量用CSS而不是js实现？（性能？）
 ### css动画相关  transform、transition、animation
@@ -16,7 +46,7 @@
 @ 黑体      SimHei
 @ 微信雅黑   Microsoft Yahei
 @ 微软正黑体 Microsoft JhengHei
-@ 新宋体    NSimSun
+@ 新宋体    NSimSunt
 @ 新细明体  MingLiU
 @ 细明体    MingLiU
 @ 标楷体    DFKai-SB
@@ -84,7 +114,8 @@ overflow:hidden;
 ### 兼容尽量多浏览器的多行文本溢出显示…方式呢？（只能用js来做了？）
 ### 改变placeholder的字体颜色大小
 ### flex
-### grid：https://www.jianshu.com/p/d183265a8dad
+### grid
+https://www.jianshu.com/p/d183265a8dad
 ### 盒模型概念
 ### box-sizing
 

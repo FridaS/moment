@@ -1,4 +1,21 @@
-[TOC]
+<!-- TOC -->
+
+- [箭头函数](#箭头函数)
+- [箭头函数this和普通this的区别](#箭头函数this和普通this的区别)
+- [箭头函数注意事项](#箭头函数注意事项)
+- [let、var、const](#letvarconst)
+- [解构赋值](#解构赋值)
+- [静态方法、静态属性、私有变量](#静态方法静态属性私有变量)
+- [Promise](#promise)
+    - [Promise简介](#promise简介)
+    - [Promise的实现原理](#promise的实现原理)
+    - [Promise的问题](#promise的问题)
+- [谈谈你对Promise的理解？和ajax的关系？](#谈谈你对promise的理解和ajax的关系)
+- [generator怎么实现](#generator怎么实现)
+- [Stream，实现gulp功能](#stream实现gulp功能)
+- [async/await（ES7）](#asyncawaites7)
+
+<!-- /TOC -->
 
 ### 箭头函数
 ### 箭头函数this和普通this的区别
@@ -17,7 +34,7 @@ https://github.com/FridaS/blog/issues/9
 静态方法和实例方法的区别：http://blog.csdn.net/tanzhengyu/article/details/51079289
 难道是考察class？
 ### Promise
-#### Promise简介
+#### Promise简介
 #### Promise的实现原理
 #### Promise的问题
 如果没有处理Promise的reject，会导致错误被丢进黑洞（http://blog.rangle.io/errors-in-promises/），
