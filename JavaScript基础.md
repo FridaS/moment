@@ -29,7 +29,7 @@ JavaScript内置对象子类型（通常称为内置对象）有：
 #### typeof
 可以判断number、string、boolean、undefined、symbol、object、function。
 
-![](http://chuantu.biz/t6/278/1523274938x-1566657543.png)
+<img src="http://chuantu.biz/t6/278/1523274938x-1566657543.png" width="150" />
 
 总结下：
 * 对于简单基本类型，除了null，都能返回正确的结果；
@@ -52,7 +52,8 @@ instanceof(A,B) = {
 }
 ```
 instanceof只能用来判断两个对象是否属于实例关系，而不能判断一个对象实例具体属于哪种类型。
-![](http://chuantu.biz/t6/278/1523275082x-1566657543.png)
+
+<img src="http://chuantu.biz/t6/278/1523275082x-1566657543.png" width="200" />
 
 对于数组，instanceof 操作符存在一个问题：它假定只有一个全局执行环境，如果网页中包含多个框架，那实际上就存在两个以上不同的全局执行环境，从而存在两个以上不同版本的构造函数。如果你从一个框架向另一个框架传入一个数组，那么传入的数组与在第二个框架中原生创建的数组分别属于各自不同的构造函数。
 
@@ -64,7 +65,8 @@ var arr =new xArray(1,2,3);// [1,2,3]
 arr instanceof Array;// false
 ```
 针对数组的这个问题，ES5.1提供了Array.isArray()方法
-![](http://chuantu.biz/t6/278/1523275144x-1566657543.png)
+<img src="http://chuantu.biz/t6/278/1523275144x-1566657543.png" width="800" />
+
 其Polyfill：
 ```javascript
 if(!Array.isArray){
@@ -77,17 +79,16 @@ Array.isArray()本质上检测的是对象的\[[Class]]值，\[[Class]]是对象
 
 #### constructor
 当一个函数F被定义时，js引擎会为F添加prototype原型，然后在prototype上添加一个constructor属性，并让其指向F的引用。如：
-![](http://chuantu.biz/t6/278/1523276038x-1566657543.png)
+<img src="http://chuantu.biz/t6/278/1523276038x-1566657543.png" width="250" />
 当执行到var f = new F()时，F被当成了构造函数，f是F的实例对象，此时F原型上的constructor传递到了f上，因此f.constructor == F。
 
 同样，js中的内置对象在内部构建时也是这样做的：
-![](http://chuantu.biz/t6/278/1523276085x-1566657543.png)
-
+<img src="http://chuantu.biz/t6/278/1523276085x-1566657543.png" width="300" />
 细节问题：
 * null和undefined是无效的对象（没有对应的内置对象），因此它们没有constructor存在，这两种类型的数据需要通过其他方式来判断；
 * 函数的constructor是不稳定的，这个主要体现在自定义对象上，当开发者重写prototype后，原有的constructor引用会丢失，constructor会默认为Object：
 
-![](http://chuantu.biz/t6/278/1523276121x-1566657543.png)
+<img src="http://chuantu.biz/t6/278/1523276121x-1566657543.png" width="250" />
 
 这是因为prototype被重新赋值的是一个{}，{}是new Object()的字面量，因为new Object()会将Object原型上的constructor传递给{}，也就是Object本身。
 因此，为了规范开发，在重写对象原型时一般都需要重新给constructor赋值，以保证对象实例的类型不被篡改。
@@ -95,7 +96,7 @@ Array.isArray()本质上检测的是对象的\[[Class]]值，\[[Class]]是对象
 #### toString
 toString()是Object的原型方法，调用该方法，默认返回当前对象的\[[Class]]。
 对于Object对象，直接调用toString()就能返回[object Object]。而对于其他对象，则需要call/apply来调用才能返回正确地类型信息。
-![](http://chuantu.biz/t6/278/1523276180x-1566657543.png)
+<img src="http://chuantu.biz/t6/278/1523276180x-1566657543.png" width="350" />
 
 参考：https://www.cnblogs.com/onepixel/p/5126046.html
 
@@ -127,7 +128,8 @@ copyObj; // {a:2, arr:[2,10]}
 obj; // {a:1, arr:[2,10]}
 ```
 由上面的例子可以知道，浅拷贝只会复制一个对象的自身属性，
-![](http://chuantu.biz/t6/278/1523277718x-1404764247.png)
+<img src="http://chuantu.biz/t6/278/1523277718x-1404764247.png" width="650" />
+
 而对于引用类型，变量处存储的是其在内存中的地址，所以浅拷贝会导致 copyObj.arr 和 obj.arr 指向同一块内存，所以导致copyObj对arr进行修改会影响到obj。
 
 这个时候需要对其进行深拷贝，不仅复制原对象的各个属性，而且将原对象各个属性所包含的对象也一次采用深拷贝的方法递归复制到新对象上，这样就不会存在copyObj和obj的arr指向同一个对象的问题。
@@ -201,7 +203,7 @@ https://segmentfault.com/a/1190000009755157
 ### 拖拽功能实现
 
 ### setTimeout参数
-![](http://chuantu.biz/t6/278/1523274328x-1566657543.png)
+<img src="http://chuantu.biz/t6/278/1523274328x-1566657543.png" width="400" />
 
 ### jQuery链式调用的原理
 方法 返回this

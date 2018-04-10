@@ -16,8 +16,7 @@ https://github.com/FridaS/blog/issues/3
 ### Vue父子组件嵌套时，组件内部的各个生命周期钩子触发先后顺序
 http://blog.csdn.net/michael8512/article/details/79031656
 ![](http://chuantu.biz/t6/278/1523273981x-1404764247.png)
-
-![](http://chuantu.biz/t6/278/1523274017x-1566657543.png)
+<img src="http://chuantu.biz/t6/278/1523274017x-1566657543.png" width="200" />
 
 从上面两张图可以看出，非minxin情况，父组件先执行beforeCreate、created、beforeMount，然后子组件执行beforeCreate、created、beforeMount、mounted，子组件挂载之后父组件才mounted；销毁情况顺序也差不多，先父组件beforeDestroy，然后子组件beforeDestroy、destroyed，子组件都销毁了父组件才destroyed；至于beforeUpdate和updated，如果是独立的状态更新（即该状态只在父组件中或只在子组件中，而不是比如props之类的情况）、则父子组件互不影响、独立执行beforeUpdate和updated，如果是诸如props的情况、则与创建和销毁顺序差不多：父组件先beforeUpdate，然后子组件beforeUpdate、updated，然后父组件updated。
 
