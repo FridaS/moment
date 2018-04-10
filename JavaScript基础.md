@@ -159,21 +159,30 @@ function deepCopy(obj){
 ### 闭包
 ### 继承
 ### js里实现继承，如何避免原型链上面的对象共享
-### 节流和防抖及其应用
-（scroll、touchmove、mousemove、resize等绑定事件中运用）
+### 节流（截流？）和防抖及其应用
+原理、实现及使用（scroll、touchmove、mousemove、resize等绑定事件中运用）、区别
+### js单线程的理解
 ### js的事件执行机制
-关于事件循环、执行优先权（macrotask、microtask）
+关于事件循环、执行优先权（macrotask/宏任务、microtask/微任务）
+
 
 ### target和currentTarget
 ### ajax
 （包括XMLHTTPRequest的过程，readyState的集中类型和代表的意思，以及浏览器的兼容处理方案）（即用原生js实现ajax，及其需要注意的要点）：https://juejin.im/post/58c883ecb123db005311861a
 ### 函数声明和变量声明（包括ES6）
+### 变量名提升
 ### this指向问题：
 https://github.com/FridaS/blog/issues/9
+### this概念 衍生出 call、apply、bind区别，箭头函数
 ### new的执行过程
 ### 面向对象的理解和实现
 （ES5和ES6分别的实现方式）
 可以从对象的特征：封装、继承、多态说？
+
+类，实例，原型的关系
+
+### 原型、原型链
+
 ### 你认为js这门语言怎么样
 弱类型语言通病？对比下其他语言（如Java）？缺点怎么解决？
 ### js判断设备来源
@@ -196,7 +205,11 @@ https://segmentfault.com/a/1190000009755157
 
 ### jQuery链式调用的原理
 方法 返回this
+### js对于异常的处理，try catch的使用，window.onerror的使用，对于promise异常的捕获，跨域脚本异常的捕获
 
+### eventEmiter的实现，常规on emit off once的实现
+
+### 数组方法（如join）、字符串方法（如split）
 
 
 待整理：
