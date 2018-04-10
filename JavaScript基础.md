@@ -97,6 +97,7 @@ toString()是Object的原型方法，调用该方法，默认返回当前对象�
 对于Object对象，直接调用toString()就能返回[object Object]。而对于其他对象，则需要call/apply来调用才能返回正确地类型信息。
 ![](http://chuantu.biz/t6/278/1523276180x-1566657543.png)
 
+参考：https://www.cnblogs.com/onepixel/p/5126046.html
 
 ### null和undefined的差异
 ### 浅拷贝和深拷贝的区别，深拷贝如何实现
@@ -158,7 +159,8 @@ function deepCopy(obj){
 ### 闭包
 ### 继承
 ### js里实现继承，如何避免原型链上面的对象共享
-### 节流和防抖
+### 节流和防抖及其应用
+（scroll、touchmove、mousemove、resize等绑定事件中运用）
 ### js的事件执行机制
 关于事件循环、执行优先权（macrotask、microtask）
 
@@ -192,7 +194,8 @@ https://segmentfault.com/a/1190000009755157
 ### setTimeout参数
 ![](http://chuantu.biz/t6/278/1523274328x-1566657543.png)
 
-
+### jQuery链式调用的原理
+方法 返回this
 
 
 

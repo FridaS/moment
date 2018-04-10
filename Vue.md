@@ -6,6 +6,8 @@ https://github.com/FridaS/blog/issues/2
 ### Vue组件data为什么必须是函数
 因为同一个组件的各个实例是共享一个data的（该组件的data），如果data是一个对象，则每个组件改变data都会影响其他组件实例，而data是函数，如data(){ return {...} }，每个实例都有其自己的一个对象“{}”，它们不会相互影响。https://cn.vuejs.org/v2/guide/components.html
 
+### 动态设置响应式数据 this.$set()
+
 ### 如何设计一些组件，原则是什么，写过什么自豪或眼前一亮的组件
 https://imys.net/20170317/write-good-front-end-component.html#%E7%BB%84%E4%BB%B6%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99、
 ### 组件间通信：
@@ -31,12 +33,14 @@ https://github.com/livoras/blog/issues/13、https://www.zhihu.com/question/61064
 https://segmentfault.com/a/1190000006599500、https://zhoukekestar.github.io/notes/2017/06/07/interview-answers.html
 https://zh.wikipedia.org/wiki/MVC、https://www.zhihu.com/question/20148405
 
+### vue数据绑定原理
 
 ### 计算属性原理
 （http://www.cnblogs.com/kidney/p/7384835.html?utm_source=debugrun&utm_medium=referral、https://segmentfault.com/a/1190000010408657）
 
 ### Vue响应式原理（Object.defineProperty）的另一种实现方式：Proxy
 （http://es6.ruanyifeng.com/#docs/proxy）
+### vue slot使用
 
 ### vue-router实现方式（和一般使用方式）
 https://zhuanlan.zhihu.com/p/27588422
@@ -48,8 +52,14 @@ function replaceHash (path) {
 }
 ```
 】
+
+hash、history区别
+
 ### 不使用vue-router时如何利用H5的history API来实现路由跳转
 ### 单页应用
 ### ssr
 https://ssr.vuejs.org/zh/、https://segmentfault.com/a/1190000007933349、https://juejin.im/entry/58c9f6b6ac502e0058854686
 【简单总结：服务端渲染（server side rendering），1.有益于SEO，2.对于客户端网络较慢的情况，服务端渲染有利于提高客户端页面性能优化，3.解决客户端运行在老的或者直接没有JavaScript 的引擎上的情况。技术选型：1.vue-ssr（vue-server-renderer，vue官方的服务端渲染包）；2.Nuxt.js（使用官方的vue-server-renderer包装后的脚手架工具，极大简化了ssr的搭建）】【如果只是为了改善少数页面的seo，可以采用另一种方案：webpack的插件 prerender-spa-plugin + vue插件(包？) vue-meta-info ： https://zhuanlan.zhihu.com/p/29148760 】
+
+
+### vuex概念
