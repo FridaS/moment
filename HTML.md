@@ -5,7 +5,7 @@
 - [渐进增强和优雅降级](#渐进增强和优雅降级)
 - [简述src与href的区别](#简述src与href的区别)
 - [如何理解HTML的语义化](#如何理解html的语义化)
-- [HTML5新增了哪些内容或API，如何使用](#html5新增了哪些内容或api如何使用)
+- [HTML5新增了哪些内容或API，如何使用 todo](#html5新增了哪些内容或api如何使用-todo)
     - [API](#api)
     - [标签](#标签)
 - [meta](#meta)
@@ -126,7 +126,7 @@
 - https://www.cnblogs.com/fliu/articles/5244866.html
 - https://juejin.im/post/5a9c8866f265da23741072bf
 
-### HTML5新增了哪些内容或API，如何使用
+### HTML5新增了哪些内容或API，如何使用 todo
 #### API
 1. Canvas
 Canvas本质上是一个位图画布。
@@ -291,6 +291,59 @@ window.addEventListener('load', loadDemo, true);
 	- 框架集：frame、frameset、noframes
 
 ### meta
+HTML的\<meta>标签，可提供有关页面的元信息（meta-information），比如针对搜索引擎和更新频度的描述和关键词；meta常用于定义页面的说明，关键字，最后修改日期，和其它的元数据（metadata）。这些元数据将服务于浏览器（如何布局或重载页面），搜索引擎和其它网络服务。
+元信息（或元数据）总是以名称/值对的形式被成对传递。
+\<meta> 标签位于文档的头部（\<head>\</head>内），不包含任何内容。
+
+|属性|必填或可选|值|描述|
+|---|---|---|---|
+|content|必填|some_text|定义与 http-equiv 或 name 属性相关的元信息|
+|http-equiv|可选|content-type、expires、refresh、set-cookie|把 content 属性关联到 HTTP 头部|
+|name|可选|author、description、keywords、generator、revised、others|name属性主要用于描述网页，比如网页的关键词，叙述等。与之对应的属性值为content，content中的内容是对name填入类型的具体描述，便于搜索引擎抓取。|
+|scheme|可选|some_text|定义用于翻译 content 属性值的格式|
+
+- name属性提供了名称/值对中的名称。如果没有提供name属性，name名称/值对中的名称会采用http-equiv属性的值。
+**"keywords" (关键字)** 是一个经常被用到的名称。它为文档定义了一组关键字，用于告诉搜索引擎，你网页的关键字。某些搜索引擎在遇到这些关键字时，会用这些关键字对文档进行分类。
+类似这样的 meta 标签可能对于进入搜索引擎的索引有帮助：
+	```html
+	<meta name="keywords" content="github，题目收集，前端">
+	```
+	**"description"(网站内容的描述)** 用于告诉搜索引擎，你网站的主要内容。
+	```html
+	<meta name="description" content="前端常见面试题目收集整理">
+	```
+	**"viewport"(移动端的窗口)** 这个属性常用于设计移动端网页。
+	```html
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	```
+- http-equiv属性为名称/值对提供了名称。并指示服务器在发送实际的文档之前先在要传送给浏览器的MIME文档头部包含名称/值对。
+当服务器向浏览器发送文档时，会先发送一些名称/值对，其中必然有一条：`content-type:text/html`（这将告诉浏览器准备接受一个HTML文档）。
+使用带有http-equiv属性的\<meta>标签时，服务器将把名称/值对添加到发送给浏览器的内容头部。例如，添加：
+	```html
+	<meta http-equiv="charset" content="iso-8859-1">
+	<meta http-equiv="expires" content="31 Dec 2008">
+	```
+	这样发送到浏览器的头部就应该包含：
+	```
+	content-type: text/html
+	charset: iso-8859-1
+	expires: 31 Dec 2008
+	```
+	当然，只有当浏览器可以接受这些附加的头部字段，并能以适当的方式使用它们时，这些字段才有意义。
+	**在HTML5中，有一个新的 charset 属性，它使字符集的定义更加容易：**
+	```html
+	<!-- html 4.01 -->
+	<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+	<!-- html5 -->
+	<meta charset="ISO-8859-1">
+	```
+- content属性提供了名称/值对中的值。改值可以是任何有效的字符串。
+content属性始终要和name属性或http-equiv属性一起使用。
+- scheme属性用于指定翻译属性值的方案。该方案应该在由\<head>标签的profile属性指定的概况文件中进行了定义。**在HTML5中，不再支持scheme属性。**
+
+
+常用的名称/值对：
+
 ```html
 <!-- 设置缩放 -->
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui" />
@@ -299,11 +352,9 @@ window.addEventListener('load', loadDemo, true);
 <!-- 仅针对IOS的Safari顶端状态条的样式（可选default/black/black-translucent ） -->
 <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 <!-- IOS中禁用将数字识别为电话号码/忽略Android平台中对邮箱地址的识别 -->
-<meta name="format-detection"content="telephone=no, email=no" />
-
+<meta name="format-detection" content="telephone=no, email=no" />
 
 <!-- 其他meta标签 -->
-
 <!-- 启用360浏览器的极速模式(webkit) -->
 <meta name="renderer" content="webkit">
 <!-- 避免IE使用兼容模式 -->
@@ -328,17 +379,21 @@ window.addEventListener('load', loadDemo, true);
 <meta name="msapplication-tap-highlight" content="no">
 ```
 
+更多：https://segmentfault.com/a/1190000004279791
+
 ### viewpoint
+
+
 ```html
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 <!-- 
-width    		设置viewport宽度，为一个正整数，或字符串‘device-width’
+width    	设置viewport宽度，为一个正整数，或字符串‘device-width’
 device-width  	设备宽度
-height   		设置viewport高度，一般设置了宽度，会自动解析出高度，可以不用设置
-initial-scale    默认缩放比例（初始缩放比例），为一个数字，可以带小数
-minimum-scale    允许用户最小缩放比例，为一个数字，可以带小数
-maximum-scale    允许用户最大缩放比例，为一个数字，可以带小数
-user-scalable    是否允许手动缩放 
+height   	设置viewport高度，一般设置了宽度，会自动解析出高度，可以不用设置
+initial-scale   默认缩放比例（初始缩放比例），为一个数字，可以带小数
+minimum-scale   允许用户最小缩放比例，为一个数字，可以带小数
+maximum-scale   允许用户最大缩放比例，为一个数字，可以带小数
+user-scalable   是否允许手动缩放 
 -->
 ```
 
