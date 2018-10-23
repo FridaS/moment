@@ -6,9 +6,9 @@
 - [简述src与href的区别](#简述src与href的区别)
 - [如何理解HTML的语义化](#如何理解html的语义化)
 - [HTML5新增了哪些内容或API，如何使用](#html5新增了哪些内容或api如何使用)
-    - [新元素(包括标签、属性)](#新元素包括标签属性)
-    - [API](#api)
-    - [标签](#标签)
+	- [新元素(包括标签、属性)](#新元素包括标签属性)
+	- [API](#api)
+	- [标签](#标签)
 - [meta](#meta)
 - [viewpoint](#viewpoint)
 - [如何处理移动端1px被处理成2px的问题](#如何处理移动端1px被处理成2px的问题)
@@ -217,7 +217,7 @@ window.addEventListener('load', loadDemo, true);
 4. WebSocket
 > WebSocket作为HTML5一种新的协议，实现了浏览器与服务器的双向通讯（双工通信，full-duplex）。在WebScoket API中，浏览器和服务器只需要做一个握手的动作，浏览器和服务器之间就形成了一条快速通道，两者就可以直接进行数据传送。
 
-在WebSocket协议中，为什么实现即时服务带来了两大好处：
+在WebSocket协议中，为实现即时服务带来了两大好处：
 - Header：互相沟通的Header是很小的，大概只有2 Bytes；
 - Server Push
 
@@ -243,16 +243,30 @@ window.addEventListener('load', loadDemo, true);
 		console.log('Error occured: ' + evt.data);
 	}
 	```
-	在实现websocket连线过程中，需要通过浏览器发出websocket连线请求，然后服务器发出回应，这个过程通常称为“握手”（handshaking）。
+	在实现WeboScket连线过程中，需要通过浏览器发出WebSocket连线请求，然后服务器发出回应，这个过程通常称为“握手”（handshaking）。
 	作为这一设计原则的一部分，WebSocket链接的协议规范定义了一个HTTP链接作为其开始生命周期，进而保证其与pre-WebSocket世界的完全向后兼容。通常来说HTTP协议切换WebSocket称为WebSocket握手。
+	
+	
+更详细参考：
+- [http://www.ruanyifeng.com/blog/2017/05/websocket.html](http://www.ruanyifeng.com/blog/2017/05/websocket.html)
 
 5. Web storage
-	- localStorage和sessionStorage；
-	- 离线缓存
+  > With web storage, web applications can store data locally within the user's browser.
+	Before HTML5, application data had to be stored in cookies, included in every server request. Web storage is more secure, and large amounts of data can be stored locally, without affecting website performance.
+	
+包括两种机制：
+- sessionStorage：为每一个给定的源（given origin）维持一个独立的存储区域，该存储区域在页面**会话**期间可用（即只在当前浏览器窗口关闭之前有效）；
+- localStorage：在浏览器关闭、重新打开后数据仍然存在（始终有效）。
 
-6. Communication
-7. Web Workers
-8. requestAnimationFrame
+
+参考：
+- https://www.w3schools.com/html/html5_webstorage.asp
+- https://juejin.im/post/5ad5b9116fb9a028e014fb19
+6. 离线缓存
+http://www.w3school.com.cn/html5/html_5_app_cache.asp
+7. Communication
+8. Web Workers
+9.  requestAnimationFrame
 > 浏览器可以优化并行的动画动作，更合理地重新排列动作序列，并把能够合并的动作放在一个渲染周期内完成，从而呈现出更流畅的动画效果。比如，通过requestAnimationFrame()，JS动画能够和CSS动画/变换或SVG SMIL动画同步发生。另外，如果在一个浏览器标签页里运行一个动画，当这个标签页不可见时，浏览器会暂停它，这回减少CPU内存的压力，节省电池电量。
 
 9. document.querySelector()、document.querySelectorAll()
@@ -532,8 +546,20 @@ user-scalable   是否允许手动缩放
 	1. 局部处理：meta标签中的viewport属性，initial-scale设置为1。rem按照设计稿标准走，外加利用transform的scale(0.5)缩小一倍即可；
 	2. 全局处理：meta标签的viewport属性，initial-scale设置为0.5，rem按照设计稿标准走即可。
 
+更多参考：
+- https://juejin.im/entry/584e427361ff4b006cd22c7c
+
 ### audio元素和video元素在iOS和Android中无法自动播放
+参考：
+- https://www.cnblogs.com/Enid0044/p/8473782.html
+- https://juejin.im/post/5b189712f265da6e235488c1
 ### HTML和XHTML区别
+参考：
+- http://www.w3school.com.cn/xhtml/xhtml_html.asp
+- https://www.zhihu.com/question/19783105
 ### 移动端布局方式，rem布局原理（width=device-width）
+参考：
+- http://www.alloyteam.com/2016/03/mobile-web-adaptation-tool-rem/
+- https://yanhaijing.com/css/2017/09/29/principle-of-rem-layout/
 
 未完待续……
